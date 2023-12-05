@@ -1,2 +1,2 @@
 # CS_Final
-Python final project, "Eels and escalators".
+Python final project, "Eels and Escalators".
