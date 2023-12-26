@@ -1,6 +1,9 @@
 import pygame
+from library.button import *
 import scenes.ready_menu as ready_menu
 
+def game_logic():
+    pass
 class scene:
     def __init__(self, screen, clock):
         self.screen = screen
@@ -15,6 +18,10 @@ class scene:
         self.allsprites = pygame.sprite.Group(self.mouse)
         pygame.mouse.set_visible(False)
         
+        self.button_0 = button(self.screen, image = pygame.image.load("resources\\start_button.png"))
+        self.button_0.x = screen.get_width() // 2 - self.button_0.width // 2
+        self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 + 325
+        
     def run(self):
         while self.running and not self.done:
             for event in pygame.event.get():
@@ -23,9 +30,8 @@ class scene:
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     pygame.mixer.music.load("resources\\sounds\\laugh.mp3")
                     pygame.mixer.music.play()
-
-            condition = False
-            if condition:
+            
+            if self.button_0.clicked:
                 self.done = True
             
             self.render()
@@ -34,13 +40,14 @@ class scene:
             
         if not self.running:
             return 0
-        elif self.done and condition:
+        elif self.done and self.button_0.clicked:
             return self.next[0]
         else:
             return -1
 
     def render(self):
         self.screen.blit(self.background, (0, 0))
+        self.button_0.draw()
         self.allsprites.update()
         self.allsprites.draw(self.screen)
 

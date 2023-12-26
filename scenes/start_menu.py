@@ -30,7 +30,6 @@ class scene:
         self.button_1.y = screen.get_height() // 2 - self.button_1.height // 2 + 25
         
     def run(self):
-        choose = 0
         while self.running and not self.done:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -39,7 +38,6 @@ class scene:
 
                     mouse_pos = pygame.mouse.get_pos()
                     if 540 < mouse_pos[0] < 840 and 600 < mouse_pos[1] < 660:
-                        choose = 1
                         self.done = True
                     
                     pygame.mixer.music.load("resources\\sounds\\laugh.mp3")
