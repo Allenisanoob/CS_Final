@@ -13,11 +13,11 @@ class process:
     def run(self):
         while self.running:
                     
-            next_scene = self.current_scene.run()
+            next_scene, next_scene_args = self.current_scene.run()
             
             if next_scene == 0 or next_scene == -1:
                 self.running = False
             else:
-                self.current_scene = next_scene(self.screen, self.clock)
+                self.current_scene = next_scene(self.screen, self.clock, next_scene_args)
         
         pygame.quit()

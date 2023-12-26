@@ -3,10 +3,6 @@ from library.button import *
 from library.mouse import *
 #import next_scenes
 
-#Calculations and game logic should be put here.
-def game_logic():
-    pass
-
 class scene:
     def __init__(self, screen, clock):
         self.screen = screen
@@ -36,7 +32,7 @@ class scene:
             if condition:
                 self.done = True
             
-            game_logic()
+            self.game_logic()
             
             self.render()
 
@@ -56,4 +52,8 @@ class scene:
     def render(self):
         self.screen.blit(self.background, (0, 0))
         self.allsprites.update()
-        self.allsprites.draw(self.screen)
+        self.allsprites.draw(self.screen)  
+    
+    #Calculations and game logic should be put here.
+    def game_logic():
+        pass
