@@ -1,5 +1,6 @@
 import pygame
 import scenes.start_menu as start_menu
+import scenes.rule_menu as rule_menu
 
 class process:
     def __init__(self, screen, clock):
