@@ -9,7 +9,7 @@ class scene:
 
         self.done = False
         self.next = [ready_menu.scene]
-        self.background = pygame.image.load("resources\\遊戲規則.png")
+        self.background = pygame.image.load("resources\\rules.png")
         
         self.mouse = Mouse()
         self.allsprites = pygame.sprite.Group(self.mouse)

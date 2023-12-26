@@ -44,4 +44,4 @@ class scene:
 
     #Put all the renderings here.
     def render(self):
-        pass
+        self.screen.fill((255, 255, 255))
