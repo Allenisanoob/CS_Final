@@ -29,7 +29,7 @@ class scene:
     block_one = (150, 649)
     block_width = 72
     
-    def __init__(self, screen, clock, *args):
+    def __init__(self, screen, clock, n,*args):
         self.screen = screen
         self.clock = clock
         self.running = True
@@ -42,8 +42,13 @@ class scene:
         self.next = []
         
         #Load background image here.
-        self.background = pygame.image.load("resources\\map.png")       
-        
+        self.background = pygame.image.load("resources\\map.png")
+        self.image_1 = pygame.image.load("resources\\0.png")
+        self.image_1_place = self.image_1.get_rect()
+        self.image_1_place.topleft = (885, 100)
+        self.image_2 = pygame.image.load(f"resources\\{n}.png")
+        self.image_2_place = self.image_2.get_rect()
+        self.image_2_place.topleft = (15, 100)
         self.allsprites = pygame.sprite.Group(self.mouse)
 
     def run(self):
@@ -69,13 +74,15 @@ class scene:
             return 0
         #Use the condition to choose the next scene here, if there are more than one, use multiple elif.
         elif self.done and condition:
-            return self.next[0]
+            return [self.next[0],0]
         else:
             return -1
 
     #Put all the renderings here.
     def render(self):
         self.screen.blit(self.background, (0, 0))
+        self.screen.blit(self.image_1, self.image_1_place)
+        self.screen.blit(self.image_2, self.image_2_place)
         self.allsprites.update()
         self.allsprites.draw(self.screen)
         
