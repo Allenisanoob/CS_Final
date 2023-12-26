@@ -1,5 +1,6 @@
 import pygame
 from library.button import *
+from library.mouse import *
 import scenes.ready_menu as ready_menu
 import scenes.rule_menu as rule_menu
 
@@ -17,15 +18,14 @@ class scene:
         
         self.mouse = Mouse()
         self.allsprites = pygame.sprite.Group(self.mouse)
-        pygame.mouse.set_visible(False)
         
         #Creating start button
-        self.button_0 = button(self.screen, image = pygame.image.load("resources\\start_button.png"))
+        self.button_0 = button(self.screen, image = "resources\\start_button.png")
         self.button_0.x = screen.get_width() // 2 - self.button_0.width // 2
         self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 - 250
         
         #Creating rule button
-        self.button_1 = button(self.screen, image = pygame.image.load("resources\\start_button.png"))
+        self.button_1 = button(self.screen, image = "resources\\start_button.png")
         self.button_1.x = screen.get_width() // 2 - self.button_1.width // 2
         self.button_1.y = screen.get_height() // 2 - self.button_1.height // 2 + 250
         
@@ -60,19 +60,3 @@ class scene:
         self.button_1.draw()
         self.allsprites.update()
         self.allsprites.draw(self.screen)
-
-class Mouse(pygame.sprite.Sprite):
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.image, self.rect = self.load_image('resources\\cursor_temp.png')
-        self.rect.topleft = (0, 0)  
-    
-    def update(self):
-        self.rect.topleft = pygame.mouse.get_pos()
-
-    def load_image(self, name):
-        image = pygame.image.load(name)
-        image = image.convert()
-        colorkey = image.get_at((0, 0))
-        image.set_colorkey(colorkey, pygame.RLEACCEL)
-        return image, image.get_rect()

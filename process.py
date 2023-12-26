@@ -8,6 +8,7 @@ class process:
         self.clock = clock
         self.running = True
         self.current_scene = start_menu.scene(self.screen, self.clock)
+        pygame.mouse.set_visible(False)
     
     def run(self):
         while self.running:
