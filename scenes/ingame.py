@@ -47,7 +47,7 @@ class scene:
     block_one = (150, 649)
     block_width = 72
     
-    def __init__(self, screen, clock, *args):
+    def __init__(self, screen, clock, n,*args):
         self.screen = screen
         self.clock = clock
         self.running = True
@@ -63,8 +63,13 @@ class scene:
         self.next = [end_menu.scene]
         
         #Load background image here.
-        self.background = pygame.image.load("resources\\map.png")       
-        
+        self.background = pygame.image.load("resources\\map.png")
+        self.image_1 = pygame.image.load("resources\\0.png")
+        self.image_1_place = self.image_1.get_rect()
+        self.image_1_place.topleft = (885, 100)
+        self.image_2 = pygame.image.load(f"resources\\{n}.png")
+        self.image_2_place = self.image_2.get_rect()
+        self.image_2_place.topleft = (15, 100)
         player0_image = pygame.transform.scale(pygame.image.load("resources\\weichen0.png").convert(), (72, 72))
         player1_image = pygame.transform.scale(pygame.image.load("resources\\weichen1.png").convert(), (72, 72))
         self.player0 = player(self.screen, player0_image, 15, -25)
@@ -104,7 +109,8 @@ class scene:
     #Put all the renderings here.
     def render(self):
         self.screen.blit(self.background, (0, 0))
-        
+        self.screen.blit(self.image_1, self.image_1_place)
+        self.screen.blit(self.image_2, self.image_2_place)
         self.allsprites.update()
         self.allsprites.draw(self.screen)
         
