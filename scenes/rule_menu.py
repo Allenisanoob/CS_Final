@@ -1,5 +1,6 @@
 import pygame
 from library.button import *
+from library.mouse import *
 import scenes.ready_menu as ready_menu
 
 def game_logic():
