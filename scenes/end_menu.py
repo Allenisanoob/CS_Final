@@ -1,4 +1,6 @@
 import pygame
+#import next_scenes
+
 #Calculations and game logic should be put here.
 def game_logic():
     pass
@@ -44,4 +46,4 @@ class scene:
 
     #Put all the renderings here.
     def render(self):
-        self.screen.fill((255, 255, 255))
+        pass
