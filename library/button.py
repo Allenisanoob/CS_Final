@@ -12,6 +12,7 @@ class button():
             return -1
         elif not image is None:
             self.image = pygame.image.load(image).convert()
+            self.image.set_colorkey((0, 0, 0))
             self.rect = self.image.get_rect()
             self.width = self.rect.width
             self.height = self.rect.height
@@ -20,8 +21,10 @@ class button():
             self.rect = pygame.rect(x, y, width, height)
             self.image.fill((255, 255, 255))    #remove this line if you want a transparent button
         
-        self.image_hover = image_hover if not image_hover is None else self.image
-        self.image_click = image_click if not image_click is None else self.image
+        self.image_hover = pygame.image.load(image_hover).convert() if not image_hover is None else self.image
+        self.image_hover.set_colorkey((0, 0, 0))
+        self.image_click = pygame.image.load(image_click).convert() if not image_click is None else self.image
+        self.image_click.set_colorkey((0, 0, 0))
     
         self.clicked = False
     

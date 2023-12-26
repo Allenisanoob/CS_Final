@@ -1,7 +1,7 @@
 import pygame
 from library.button import *
 from library.mouse import *
-import scenes.ready_menu as ready_menu
+import scenes.imgame as imgame
 
 def game_logic():
     pass
@@ -12,14 +12,14 @@ class scene:
         self.running = True
 
         self.done = False
-        self.next = [ready_menu.scene]
+        self.next = [imgame.scene]
         self.background = pygame.image.load("resources\\rules.png")
         
         self.mouse = Mouse()
         self.allsprites = pygame.sprite.Group(self.mouse)
         pygame.mouse.set_visible(False)
         
-        self.button_0 = button(self.screen, image = pygame.image.load("resources\\start_button.png"))
+        self.button_0 = button(self.screen, image = "resources\\start_button.png")
         self.button_0.x = screen.get_width() // 2 - self.button_0.width // 2
         self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 + 325
         

@@ -1,4 +1,6 @@
 import pygame
+from library.button import *
+from library.mouse import *
 #Calculations and game logic should be put here.
 def game_logic():
     pass
@@ -8,12 +10,18 @@ class scene:
         self.screen = screen
         self.clock = clock
         self.running = True
+        self.mouse = Mouse()
         
         #Ture if the scene is ended by regular procedure.
         self.done = False
         
         #Put all the "next scenes" in this list.
         self.next = []
+        
+        #Load background image here.
+        self.background = pygame.image.load("resources\\map.png")
+        
+        self.allsprites = pygame.sprite.Group(self.mouse)
 
     def run(self):
         while self.running and not self.done:
@@ -44,4 +52,6 @@ class scene:
 
     #Put all the renderings here.
     def render(self):
-        self.screen.fill((255, 255, 255))
+        self.screen.blit(self.background, (0, 0))
+        self.allsprites.update()
+        self.allsprites.draw(self.screen)

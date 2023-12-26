@@ -1,7 +1,7 @@
 import pygame
 from library.button import *
 from library.mouse import *
-import scenes.ready_menu as ready_menu
+import scenes.imgame as imgame
 import scenes.rule_menu as rule_menu
 
 def game_logic():
@@ -13,7 +13,7 @@ class scene:
         self.running = True
 
         self.done = False
-        self.next = [ready_menu.scene, rule_menu.scene]
+        self.next = [imgame.scene, rule_menu.scene]
         self.background = pygame.image.load("resources\\start_menu.png")
         
         self.mouse = Mouse()
@@ -22,12 +22,12 @@ class scene:
         #Creating start button
         self.button_0 = button(self.screen, image = "resources\\start_button.png")
         self.button_0.x = screen.get_width() // 2 - self.button_0.width // 2
-        self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 - 75
+        self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 - 50
         
         #Creating rule button
-        self.button_1 = button(self.screen, image = "resources\\start_button.png")
+        self.button_1 = button(self.screen, image = "resources\\rule_button.png")
         self.button_1.x = screen.get_width() // 2 - self.button_1.width // 2
-        self.button_1.y = screen.get_height() // 2 - self.button_1.height // 2 + 25
+        self.button_1.y = screen.get_height() // 2 - self.button_1.height // 2 + 50
         
     def run(self):
         while self.running and not self.done:
