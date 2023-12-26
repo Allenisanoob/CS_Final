@@ -1,6 +1,6 @@
 import pygame
 from library.button import *
-import scenes.ingame as ingame
+from library.mouse import *
 import scenes.rule_menu as rule_menu
 import scenes.ready_menu as ready_menu
 
@@ -18,7 +18,6 @@ class scene:
         
         self.mouse = Mouse()
         self.allsprites = pygame.sprite.Group(self.mouse)
-        pygame.mouse.set_visible(False)
         
         #Creating start button
         self.button_0 = button(self.screen, image = "resources\\start_button.png")
@@ -54,9 +53,9 @@ class scene:
         if not self.running:
             return 0
         elif self.done and self.button_0.clicked:
-            return self.next[0]
+            return [self.next[0]]
         elif self.done and self.button_1.clicked:
-            return self.next[1]
+            return [self.next[1]]
         else:
             return -1
 
@@ -66,19 +65,3 @@ class scene:
         self.button_1.draw()
         self.allsprites.update()
         self.allsprites.draw(self.screen)
-
-class Mouse(pygame.sprite.Sprite):
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.image, self.rect = self.load_image('resources\\cursor_temp.png')
-        self.rect.topleft = (0, 0)  
-    
-    def update(self):
-        self.rect.topleft = pygame.mouse.get_pos()
-
-    def load_image(self, name):
-        image = pygame.image.load(name)
-        image = image.convert()
-        colorkey = image.get_at((0, 0))
-        image.set_colorkey(colorkey, pygame.RLEACCEL)
-        return image, image.get_rect()

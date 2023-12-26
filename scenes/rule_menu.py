@@ -6,7 +6,7 @@ import scenes.ingame as ingame
 def game_logic():
     pass
 class scene:
-    def __init__(self, screen, clock):
+    def __init__(self, screen, clock, *args):
         self.screen = screen
         self.clock = clock
         self.running = True
@@ -42,7 +42,7 @@ class scene:
         if not self.running:
             return 0
         elif self.done and self.button_0.clicked:
-            return self.next[0]
+            return [self.next[0]]
         else:
             return -1
 
@@ -52,18 +52,3 @@ class scene:
         self.allsprites.update()
         self.allsprites.draw(self.screen)
 
-class Mouse(pygame.sprite.Sprite):
-    def __init__(self):
-        pygame.sprite.Sprite.__init__(self)
-        self.image, self.rect = self.load_image('resources\\cursor_temp.png')
-        self.rect.topleft = (0, 0)  
-    
-    def update(self):
-        self.rect.topleft = pygame.mouse.get_pos()
-
-    def load_image(self, name):
-        image = pygame.image.load(name)
-        image = image.convert()
-        colorkey = image.get_at((0, 0))
-        image.set_colorkey(colorkey, pygame.RLEACCEL)
-        return image, image.get_rect()

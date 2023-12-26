@@ -1,5 +1,5 @@
 import pygame
-import scene.ready_menu as ready_menu
+import scenes.ready_menu as ready_menu
 #import next_scenes
 
 #Calculations and game logic should be put here.
@@ -7,7 +7,7 @@ def game_logic():
     pass
 
 class scene:
-    def __init__(self, screen, clock):
+    def __init__(self, screen, clock, *args):
         self.screen = screen
         self.clock = clock
         self.running = True
