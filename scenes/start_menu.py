@@ -22,12 +22,12 @@ class scene:
         #Creating start button
         self.button_0 = button(self.screen, image = "resources\\start_button.png")
         self.button_0.x = screen.get_width() // 2 - self.button_0.width // 2
-        self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 - 250
+        self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 - 75
         
         #Creating rule button
         self.button_1 = button(self.screen, image = "resources\\start_button.png")
         self.button_1.x = screen.get_width() // 2 - self.button_1.width // 2
-        self.button_1.y = screen.get_height() // 2 - self.button_1.height // 2 + 250
+        self.button_1.y = screen.get_height() // 2 - self.button_1.height // 2 + 25
         
     def run(self):
         while self.running and not self.done:
@@ -35,6 +35,11 @@ class scene:
                 if event.type == pygame.QUIT:
                     self.running = False
                 elif event.type == pygame.MOUSEBUTTONDOWN:
+
+                    mouse_pos = pygame.mouse.get_pos()
+                    if 540 < mouse_pos[0] < 840 and 600 < mouse_pos[1] < 660:
+                        self.done = True
+                    
                     pygame.mixer.music.load("resources\\sounds\\laugh.mp3")
                     pygame.mixer.music.play()
             
