@@ -20,12 +20,12 @@ class scene:
         pygame.mouse.set_visible(False)
         
         #Creating start button
-        self.button_0 = button(self.screen, image = pygame.image.load("resources\\start_button.png"))
+        self.button_0 = button(self.screen, image = "resources\\start_button.png")
         self.button_0.x = screen.get_width() // 2 - self.button_0.width // 2
         self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 -20
         
         #Creating rule button
-        self.button_1 = button(self.screen, image = pygame.image.load("resources\\rule_button.png"))
+        self.button_1 = button(self.screen, image = "resources\\rule_button.png")
         self.button_1.x = screen.get_width() // 2 - self.button_1.width // 2
         self.button_1.y = screen.get_height() // 2 - self.button_1.height // 2 + 50
         
