@@ -13,7 +13,7 @@ class scene:
 
         self.done = False
         self.next = [ingame.scene]
-        self.background = pygame.image.load("resources\\rules.png")
+        self.background = pygame.image.load("resources\\ready_menu.png")
         
         self.mouse = Mouse()
         self.allsprites = pygame.sprite.Group(self.mouse)
@@ -21,7 +21,7 @@ class scene:
         
         self.button_0 = button(self.screen, image = "resources\\start_button.png")
         self.button_0.x = screen.get_width() // 2 - self.button_0.width // 2
-        self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 + 175
+        self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 + 280
         
     def run(self):
         while self.running and not self.done:
