@@ -1,4 +1,5 @@
 import pygame
+import scene.ready_menu as ready_menu
 #import next_scenes
 
 #Calculations and game logic should be put here.
