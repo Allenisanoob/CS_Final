@@ -21,7 +21,7 @@ class scene:
         
         self.button_0 = button(self.screen, image = "resources\\start_button.png")
         self.button_0.x = screen.get_width() // 2 - self.button_0.width // 2
-        self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 + 325
+        self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 + 175
         
     def run(self):
         while self.running and not self.done:
@@ -51,3 +51,19 @@ class scene:
         self.button_0.draw()
         self.allsprites.update()
         self.allsprites.draw(self.screen)
+
+class Mouse(pygame.sprite.Sprite):
+    def __init__(self):
+        pygame.sprite.Sprite.__init__(self)
+        self.image, self.rect = self.load_image('resources\\cursor_temp.png')
+        self.rect.topleft = (0, 0)  
+    
+    def update(self):
+        self.rect.topleft = pygame.mouse.get_pos()
+
+    def load_image(self, name):
+        image = pygame.image.load(name)
+        image = image.convert()
+        colorkey = image.get_at((0, 0))
+        image.set_colorkey(colorkey, pygame.RLEACCEL)
+        return image, image.get_rect()
