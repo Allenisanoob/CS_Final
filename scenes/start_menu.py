@@ -1,6 +1,6 @@
 import pygame
 from library.button import *
-import scenes.ready_menu as ready_menu
+import scenes.ingame as ingame
 import scenes.rule_menu as rule_menu
 
 def game_logic():
@@ -12,7 +12,7 @@ class scene:
         self.running = True
 
         self.done = False
-        self.next = [imgame.scene, rule_menu.scene]
+        self.next = [ingame.scene, rule_menu.scene]
         self.background = pygame.image.load("resources\\start_menu.png")
         
         self.mouse = Mouse()
