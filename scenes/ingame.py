@@ -3,8 +3,6 @@ from library.button import *
 from library.mouse import *
 
 class player(pygame.sprite.Sprite):
-    #Class variables
-    block_one = (150, 649)
     
     def __init__(self, screen, image, xoffset, yoffset):
         pygame.sprite.Sprite.__init__(self)
@@ -28,8 +26,10 @@ class scene:
     ladder_end = (37, 14, 31, 42, 84, 67, 91, 99)
     snake_start = (17, 54, 62, 64, 87, 93, 95, 98)
     snake_end = (7, 34, 19, 60, 36, 73, 75, 79)
+    block_one = (150, 649)
+    block_width = 72
     
-    def __init__(self, screen, clock):
+    def __init__(self, screen, clock, *args):
         self.screen = screen
         self.clock = clock
         self.running = True
@@ -87,6 +87,14 @@ class scene:
                 xx = 20 - block
             else:
                 xx = block - 1
-            yy = 9 - (block - 1) // 10
-            return (xx, yy)
+            yy = (block - 1) // 10
+            
+            x, y = (self.block_one[0] + xx * self.block_width, self.block_one[1] - yy * self.block_width)
+            return (x, y)
+        
+        def speed(start_block, end_block):
+            start_x, start_y = get_coord(start_block)
+            end_x, end_y = get_coord(end_block)
+            return ((end_x - start_x) / 10, (end_y - start_y) / 10)
+        
         pass
