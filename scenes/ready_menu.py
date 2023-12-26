@@ -61,7 +61,7 @@ class scene:
         if not self.running:
             return 0
         elif self.done and self.button_0.clicked:
-            return [self.next[0]]
+            return [self.next[0], n]
         else:
             return -1
 

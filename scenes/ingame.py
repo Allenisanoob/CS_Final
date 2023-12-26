@@ -47,7 +47,7 @@ class scene:
     block_one = (150, 649)
     block_width = 72
     
-    def __init__(self, screen, clock, n,*args):
+    def __init__(self, screen, clock, *args):
         self.screen = screen
         self.clock = clock
         self.running = True
@@ -67,9 +67,10 @@ class scene:
         self.image_1 = pygame.image.load("resources\\0.png")
         self.image_1_place = self.image_1.get_rect()
         self.image_1_place.topleft = (885, 100)
-        self.image_2 = pygame.image.load(f"resources\\{n}.png")
+        self.image_2 = pygame.image.load(f"resources\\{args[0]}.png")
         self.image_2_place = self.image_2.get_rect()
         self.image_2_place.topleft = (15, 100)
+        
         player0_image = pygame.transform.scale(pygame.image.load("resources\\weichen0.png").convert(), (72, 72))
         player1_image = pygame.transform.scale(pygame.image.load("resources\\weichen1.png").convert(), (72, 72))
         self.player0 = player(self.screen, player0_image, 15, -25)

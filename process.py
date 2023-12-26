@@ -14,6 +14,7 @@ class process:
         while self.running:
             
             next_scene = self.current_scene.run()
+            print(next_scene)
             
             if next_scene[0] == 0 or next_scene[0] == -1:
                 self.running = False
