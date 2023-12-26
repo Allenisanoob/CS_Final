@@ -6,7 +6,7 @@ def main():
     pygame.mixer.init()
     pygame.display.set_caption("Eels and Escalators")
     
-    screen = pygame.display.set_mode((784, 593))
+    screen = pygame.display.set_mode((1424, 1080))
     clock = pygame.time.Clock()
 
     game = process(screen, clock)
