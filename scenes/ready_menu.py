@@ -13,8 +13,8 @@ class scene:
         self.running = True
 
         self.done = False
-        self.next = [ready_menu.scene, rule_menu.scene]
-        self.background = pygame.image.load("resources\\start_menu.png")
+        self.next = [ingame.scene]
+        self.background = pygame.image.load("resources\\ready_menu.png")
         
         self.mouse = Mouse()
         self.allsprites = pygame.sprite.Group(self.mouse)
@@ -22,13 +22,13 @@ class scene:
         
         #Creating start button
         self.button_0 = button(self.screen, image = "resources\\start_button.png")
-        self.button_0.x = screen.get_width() // 2 - self.button_0.width // 2
-        self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 - 55
+        self.button_0.x = screen.get_width() // 2 - self.button_0.width // 2 
+        self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 + 280
         
         #Creating rule button
-        self.button_1 = button(self.screen, image = "resources\\rule_button.png")
-        self.button_1.x = screen.get_width() // 2 - self.button_1.width // 2
-        self.button_1.y = screen.get_height() // 2 - self.button_1.height // 2 + 25
+        self.button_1 = button(self.screen, image = "resources\\me.png")
+        self.button_1.x = 29
+        self.button_1.y = screen.get_height() // 2 - self.button_1.height // 2 
         
     def run(self):
         while self.running and not self.done:
@@ -36,15 +36,21 @@ class scene:
                 if event.type == pygame.QUIT:
                     self.running = False
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-
                     mouse_pos = pygame.mouse.get_pos()
-                    if 540 < mouse_pos[0] < 840 and 600 < mouse_pos[1] < 660:
-                        self.done = True
-                    
-                    pygame.mixer.music.load("resources\\sounds\\laugh.mp3")
-                    pygame.mixer.music.play()
-            
-            if self.button_0.clicked or self.button_1.clicked:
+                    if 0 < mouse_pos[0] < 255 and 200 < mouse_pos[1] < 520 :
+                        self.button_1.x = 29
+                        n = 1
+                    if 255 < mouse_pos[0] < 510 and 200 < mouse_pos[1] < 520 :
+                        self.button_1.x = 286
+                        n = 2               
+                    if 510 < mouse_pos[0] < 765 and 200 < mouse_pos[1] < 520 :
+                        self.button_1.x = 543
+                        n = 3 
+                    if 765 < mouse_pos[0] < 1020 and 200 < mouse_pos[1] < 520 :
+                        self.button_1.x = 800
+                        n = 4
+       
+            if self.button_0.clicked:
                 self.done = True
             
             self.render()
@@ -55,8 +61,6 @@ class scene:
             return 0
         elif self.done and self.button_0.clicked:
             return self.next[0]
-        elif self.done and self.button_1.clicked:
-            return self.next[1]
         else:
             return -1
 
