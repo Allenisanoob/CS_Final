@@ -41,7 +41,7 @@ class scene:
                         self.button_1.x = 29
                         n = 1
                     if 255 < mouse_pos[0] < 510 and 200 < mouse_pos[1] < 520 :
-                        self.button_1.x = 286
+                        self.button_1.x = 283
                         n = 2               
                     if 510 < mouse_pos[0] < 765 and 200 < mouse_pos[1] < 520 :
                         self.button_1.x = 543
