@@ -19,8 +19,8 @@ class button():
         else:
             self.width = width
             self.height = height
-            self.image = pygame.Surface((width, height))
             self.rect = pygame.Rect(x, y, width, height)
+            self.image = pygame.Surface(self.rect.size)
             self.image.fill((255, 255, 255))    #remove this line if you want a transparent button
         
         self.image_hover = pygame.image.load(image_hover).convert() if not image_hover is None else self.image

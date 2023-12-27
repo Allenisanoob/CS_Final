@@ -112,6 +112,7 @@ class scene:
         self.screen.blit(self.background, (0, 0))
         self.screen.blit(self.image_1, self.image_1_place)
         self.screen.blit(self.image_2, self.image_2_place)
+        self.button_0.draw()
         self.allsprites.update()
         self.allsprites.draw(self.screen)
         
@@ -162,15 +163,16 @@ class scene:
                         self.players[self.turn].dest = get_coord(self.snake_start[i])
                         break
             elif dices[0][0] == 1 and dices[1][0] == 1 and not no_object:
-                for i in range(7):
+                for i in range(8):
                     if self.players[self.turn].block <= self.ladder_start[i]:
                         self.players[self.turn].block = self.ladder_end[i]
                         self.players[self.turn].dest = get_coord(self.ladder_start[i])
                         break
             else:
                 next_block = self.players[self.turn].block + dices[0][1] + dices[1][1]
-                if self.players[self.turn].block > 100:
+                if next_block > 100:
                     self.players[self.turn].block = 100
+                    self.players[self.turn].dest = get_coord(100)
                 elif next_block in self.snake_start:
                     index = self.snake_start.index(next_block)
                     self.players[self.turn].block = self.snake_end[index]
@@ -180,7 +182,8 @@ class scene:
                     self.players[self.turn].block = self.ladder_end[index]
                     self.players[self.turn].dest = get_coord(self.ladder_start[index])
                 else:
-                    self.players[self.turn].dest = get_coord(self.players[self.turn].block)
+                    self.players[self.turn].dest = get_coord(next_block)
+                    self.players[self.turn].block = next_block
                         
             #Play animation here.
             print(dices)
