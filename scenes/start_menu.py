@@ -2,12 +2,12 @@ import pygame
 from library.button import *
 from library.mouse import *
 import scenes.rule_menu as rule_menu
-import scenes.ready_menu as ready_menu
+import scenes.ready_menu1 as ready_menu
 
 def game_logic():
     pass
 class scene:
-    def __init__(self, screen, clock):
+    def __init__(self, screen, clock,*args):
         self.screen = screen
         self.clock = clock
         self.running = True

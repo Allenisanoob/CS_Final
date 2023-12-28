@@ -42,7 +42,7 @@ class scene:
     #Class variables
     ladder_start = (2, 4, 9, 21, 28, 51, 72, 80)
     ladder_end = (37, 14, 31, 42, 84, 67, 91, 99)
-    snake_start = (17, 54, 62, 64, 87, 93, 95, 98)
+    snake_start = (17, 54, 62, 64, 87, 93, 95, 98) 
     snake_end = (7, 34, 19, 60, 36, 73, 75, 79)
     block_one = (150, 649)
     block_width = 72
@@ -64,10 +64,10 @@ class scene:
         
         #Load background image here.
         self.background = pygame.image.load("resources\\map.png")
-        self.image_1 = pygame.image.load("resources\\0.png")
+        self.image_1 = pygame.image.load(f"resources\\{args[0][1]}.png")
         self.image_1_place = self.image_1.get_rect()
         self.image_1_place.topleft = (885, 100)
-        self.image_2 = pygame.image.load(f"resources\\{args[0]}.png")
+        self.image_2 = pygame.image.load(f"resources\\{args[0][0]}.png")
         self.image_2_place = self.image_2.get_rect()
         self.image_2_place.topleft = (15, 100)
         
