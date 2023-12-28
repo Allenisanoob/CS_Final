@@ -22,7 +22,7 @@ class scene:
         pygame.mouse.set_visible(False)
         
         #Creating start button
-        self.button_0 = button(self.screen, image = "resources\\start_button.png")
+        self.button_0 = button(self.screen, image = "resources\\next.png")
         self.button_0.x = screen.get_width() // 2 - self.button_0.width // 2 
         self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 + 280
         
