@@ -2,7 +2,7 @@ import pygame
 from library.button import *
 from library.mouse import *
 import scenes.rule_menu as rule_menu
-import scenes.ready_menu1 as ready_menu
+import scenes.ready_menu1 as ready_menu1
 
 def game_logic():
     pass
@@ -13,7 +13,7 @@ class scene:
         self.running = True
 
         self.done = False
-        self.next = [ready_menu.scene, rule_menu.scene]
+        self.next = [ready_menu1.scene, rule_menu.scene]
         self.background = pygame.image.load("resources\\start_menu.png")
         
         self.mouse = Mouse()
@@ -21,13 +21,13 @@ class scene:
         
         #Creating start button
         self.button_0 = button(self.screen, image = "resources\\start_button.png")
-        self.button_0.x = screen.get_width() // 2 - self.button_0.width // 2
-        self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 - 55
+        self.button_0.set_pos(screen.get_width() // 2 - self.button_0.width // 2,
+                              screen.get_height() // 2 - self.button_0.height // 2 - 55)
         
         #Creating rule button
         self.button_1 = button(self.screen, image = "resources\\rule_button.png")
-        self.button_1.x = screen.get_width() // 2 - self.button_1.width // 2
-        self.button_1.y = screen.get_height() // 2 - self.button_1.height // 2 + 25
+        self.button_1.set_pos(screen.get_width() // 2 - self.button_0.width // 2,
+                              screen.get_height() // 2 - self.button_0.height // 2 + 25)
         
     def run(self):
         while self.running and not self.done:
@@ -43,7 +43,11 @@ class scene:
                     pygame.mixer.music.load("resources\\sounds\\laugh.mp3")
                     pygame.mixer.music.play()
             
-            if self.button_0.clicked or self.button_1.clicked:
+            if self.button_0.clicked:
+                next_scene = 0
+                self.done = True   
+            elif self.button_1.clicked:
+                next_scene = 1
                 self.done = True
             
             self.render()
@@ -51,13 +55,11 @@ class scene:
             self.clock.tick(60)
             
         if not self.running:
-            return 0
-        elif self.done and self.button_0.clicked:
-            return [self.next[0]]
-        elif self.done and self.button_1.clicked:
-            return [self.next[1]]
+            return [0]
+        elif self.done :
+            return [self.next[next_scene]]
         else:
-            return -1
+            return [-1]
 
     def render(self):
         self.screen.blit(self.background, (0, 0))

@@ -12,7 +12,7 @@ class scene:
         self.running = True
 
         self.done = False
-        self.next = [ready_menu.scene]
+        self.next = [ready_menu.scene, 0]
         self.background = pygame.image.load("resources\\end_menu.png")
         
         self.mouse = Mouse()
@@ -20,12 +20,12 @@ class scene:
         pygame.mouse.set_visible(False)
         
         self.button_0 = button(self.screen, image = "resources\\restart_button.png")
-        self.button_0.x = screen.get_width() // 2 - self.button_0.width // 2 - 250
-        self.button_0.y = screen.get_height() // 2 - self.button_0.height // 2 -220
+        self.button_0.set_pos(screen.get_width() // 2 - self.button_0.width // 2 - 250,
+                              screen.get_height() // 2 - self.button_0.height // 2 - 220)
 
         self.button_1 = button(self.screen, image = "resources\\quit_button.png")
-        self.button_1.x = screen.get_width() // 2 - self.button_1.width // 2 + 250
-        self.button_1.y = screen.get_height() // 2 - self.button_1.height // 2 - 220
+        self.button_1.set_pos(screen.get_width() // 2 - self.button_0.width // 2 + 250,
+                              screen.get_height() // 2 - self.button_0.height // 2 - 220)
         
     def run(self):
         while self.running and not self.done:
@@ -33,7 +33,11 @@ class scene:
                 if event.type == pygame.QUIT:
                     self.running = False
             
-            if self.button_0.clicked or self.button_1.clicked:
+            if self.button_0.clicked:
+                next_scene = 0
+                self.done = True
+            elif self.button_1.clicked:
+                next_scene = 1
                 self.done = True
             
             self.render()
@@ -41,13 +45,11 @@ class scene:
             self.clock.tick(60)
             
         if not self.running:
-            return 0
-        elif self.done and self.button_0.clicked:
-            return [self.next[0]]
-        elif self.done and self.button_1.clicked:
-            return -1
+            return [0]
+        elif self.done:
+            return [self.next[next_scene]]
         else:
-            return -1
+            return [-1]
 
     def render(self):
         self.screen.blit(self.background, (0, 0))
