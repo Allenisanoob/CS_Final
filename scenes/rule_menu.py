@@ -21,7 +21,7 @@ class scene:
         
         self.button_0 = button(self.screen, image = "resources\\start_button.png")
         self.button_0.set_pos(screen.get_width() // 2 - self.button_0.width // 2,
-                              screen.get_height() // 2 - self.button_0.height // 2 + 175)
+                              screen.get_height() // 2 - self.button_0.height // 2 + 210)
         
     def run(self):
         while self.running and not self.done:
