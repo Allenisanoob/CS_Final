@@ -134,7 +134,7 @@ class scene:
         self.video.preview()
         self.screen.blit(image, (0, 0))
         pygame.display.flip()
-        pygame.time.wait(1500)
+        pygame.time.wait(2000)
 
     #Calculations and game logic should be put here.
     def game_logic(self):
