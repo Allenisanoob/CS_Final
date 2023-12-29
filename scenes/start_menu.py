@@ -1,3 +1,4 @@
+import os
 import pygame
 from library.button import *
 from library.mouse import *
@@ -14,20 +15,20 @@ class scene:
 
         self.done = False
         self.next = [ready_menu1.scene, rule_menu.scene]
-        self.background = pygame.image.load("resources\\start_menu.png")
+        self.background = pygame.image.load(os.path.join("resources", "start_menu.png"))
         
         self.mouse = Mouse()
         self.allsprites = pygame.sprite.Group(self.mouse)
         
         #Creating start button
-        self.button_0 = button(self.screen, image = "resources\\start_button.png",
-                               image_hover="resources\\start_button_hover.png")
+        self.button_0 = button(self.screen, image = os.path.join("resources", "start_button.png"),
+                               image_hover = os.path.join("resources", "start_button_hover.png"))
         self.button_0.set_pos(screen.get_width() // 2 - self.button_0.width // 2,
                               screen.get_height() // 2 - self.button_0.height // 2 - 55)
         
         #Creating rule button
-        self.button_1 = button(self.screen, image = "resources\\rule_button.png",
-                               image_hover="resources\\rule_button_hover.png")
+        self.button_1 = button(self.screen, image = os.path.join("resources", "rule_button.png"),
+                               image_hover = os.path.join("resources", "rule_button_hover.png"))
         self.button_1.set_pos(screen.get_width() // 2 - self.button_0.width // 2,
                               screen.get_height() // 2 - self.button_0.height // 2 + 25)
         
@@ -42,7 +43,7 @@ class scene:
                     if 540 < mouse_pos[0] < 840 and 600 < mouse_pos[1] < 660:
                         self.done = True
                     
-                    pygame.mixer.music.load("resources\\sounds\\laugh.mp3")
+                    pygame.mixer.music.load(os.path.join("resources", "sounds", "laugh.mp3"))
                     pygame.mixer.music.play()
             
             if self.button_0.clicked:

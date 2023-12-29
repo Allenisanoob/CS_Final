@@ -1,3 +1,4 @@
+import os
 import pygame
 import random
 from moviepy.editor import VideoFileClip
@@ -64,22 +65,22 @@ class scene:
         self.next = [end_menu.scene]
         
         #Load background image here.
-        self.background = pygame.image.load("resources\\map.png")
-        self.image_1 = pygame.image.load(f"resources\\{args[0][0]}.png")
+        self.background = pygame.image.load(os.path.join("resources", "map.png"))
+        self.image_1 = pygame.image.load(os.path.join("resources", f"{args[0][0]}.png"))
         self.image_1_place = self.image_1.get_rect()
         self.image_1_place.topleft = (15, 100)
-        self.image_2 = pygame.image.load(f"resources\\{args[0][1]}.png")
+        self.image_2 = pygame.image.load(os.path.join("resources", f"{args[0][1]}.png"))
         self.image_2_place = self.image_2.get_rect()
         self.image_2_place.topleft = (885, 100)
         
-        player1_image = pygame.transform.scale(pygame.image.load("resources\\weichen1.png").convert(), (72, 72))
-        player2_image = pygame.transform.scale(pygame.image.load("resources\\weichen2.png").convert(), (72, 72))
+        player1_image = pygame.transform.scale(pygame.image.load(os.path.join("resources", "weichen1.png")).convert(), (72, 72))
+        player2_image = pygame.transform.scale(pygame.image.load(os.path.join("resources", "weichen2.png")).convert(), (72, 72))
         self.player1 = player(self.screen, player1_image, 15, -25)
         self.player2 = player(self.screen, player2_image, 0, -15)
         self.players = [None, self.player1, self.player2]
         self.allsprites = pygame.sprite.Group(self.mouse, self.player1, self.player2)
 
-        self.video = VideoFileClip("resources\\rolling_dice_1020x720.mp4")
+        self.video = VideoFileClip(os.path.join("resources", "rolling_dice_1020x720.mp4"))
         
         #Creating roll button
         self.button_0 = button(self.screen, x = 900, y = 620, width = 50, height = 50, color = (255, 255, 255), remove_bg = False)    #Need image here.
@@ -130,7 +131,7 @@ class scene:
         self.allsprites.draw(self.screen)
     
     def play_animation(self, dices):
-        image = pygame.image.load(f"resources\\dice\\dice_{dices[0][0]}{dices[0][1]}{dices[1][0]}{dices[1][1]}.png")
+        image = pygame.image.load(os.path.join("resources", "dice", f"dice_{dices[0][0]}{dices[0][1]}{dices[1][0]}{dices[1][1]}.png"))
         self.video.preview()
         self.screen.blit(image, (0, 0))
         pygame.display.flip()

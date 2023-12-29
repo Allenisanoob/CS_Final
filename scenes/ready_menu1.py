@@ -1,3 +1,4 @@
+import os
 import pygame
 from library.button import *
 from library.mouse import *
@@ -13,20 +14,20 @@ class scene:
 
         self.done = False
         self.next = [ready_menu2.scene]
-        self.background = pygame.image.load("resources\\ready_menu.png")
+        self.background = pygame.image.load(os.path.join("resources", "ready_menu.png"))
         
         self.mouse = Mouse()
         self.allsprites = pygame.sprite.Group(self.mouse)
         pygame.mouse.set_visible(False)
         
         #Creating next button
-        self.button_0 = button(self.screen, image = "resources\\next_button.png",
-                               image_hover="resources\\next_button_hover.png")
+        self.button_0 = button(self.screen, image = os.path.join("resources", "next_button.png"),
+                               image_hover = os.path.join("resources", "next_button_hover.png"))
         self.button_0.set_pos(screen.get_width() // 2 - self.button_0.width // 2,
                               screen.get_height() // 2 - self.button_0.height // 2 + 280)
         
         #Creating selecting figure
-        self.button_1 = button(self.screen, image = "resources\\me1.png", remove_bg = False)
+        self.button_1 = button(self.screen, image = os.path.join("resources", "me1.png"), remove_bg = False)
         self.button_1.set_pos(x = 29,
                               y = screen.get_height() // 2 - self.button_1.height // 2)
         

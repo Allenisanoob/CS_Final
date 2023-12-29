@@ -1,3 +1,4 @@
+import os
 import pygame
 from process import *
 
@@ -9,7 +10,7 @@ def main():
     screen = pygame.display.set_mode((1020, 720))
     clock = pygame.time.Clock()
 
-    icon = pygame.image.load("resources\\icon.png").convert()
+    icon = pygame.image.load(os.path.join("resources", "icon.png")).convert()
     pygame.display.set_icon(icon)
 
     game = process(screen, clock)
