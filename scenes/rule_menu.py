@@ -19,7 +19,8 @@ class scene:
         self.allsprites = pygame.sprite.Group(self.mouse)
         pygame.mouse.set_visible(False)
         
-        self.button_0 = button(self.screen, image = "resources\\start_button.png")
+        self.button_0 = button(self.screen, image = "resources\\start_button.png",
+                               image_hover="resources\\start_button_hover.png")
         self.button_0.set_pos(screen.get_width() // 2 - self.button_0.width // 2,
                               screen.get_height() // 2 - self.button_0.height // 2 + 210)
         

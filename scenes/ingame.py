@@ -82,7 +82,7 @@ class scene:
         self.video = VideoFileClip("resources\\rolling_dice_1020x720.mp4")
         
         #Creating roll button
-        self.button_0 = button(self.screen, x = 900, y = 620, width = 50, height = 50, color = (255, 255, 255))    #Need image here.
+        self.button_0 = button(self.screen, x = 900, y = 620, width = 50, height = 50, color = (255, 255, 255), remove_bg = False)    #Need image here.
         #Creating cheat button
         self.button_win1 = button(self.screen, x = 900, y = 460, width = 50, height = 50, color = (173, 216, 230))    #Need image here.
         self.button_win2 = button(self.screen, x = 900, y = 540, width = 50, height = 50, color = (255, 127, 127))    #Need image here.

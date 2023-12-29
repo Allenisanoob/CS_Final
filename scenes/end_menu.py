@@ -19,11 +19,13 @@ class scene:
         self.allsprites = pygame.sprite.Group(self.mouse)
         pygame.mouse.set_visible(False)
         
-        self.button_0 = button(self.screen, image = "resources\\restart_button.png")
+        self.button_0 = button(self.screen, image = "resources\\restart_button.png",
+                               image_hover="resources\\restart_button_hover.png")
         self.button_0.set_pos(screen.get_width() // 2 - self.button_0.width // 2 - 250,
                               screen.get_height() // 2 - self.button_0.height // 2 - 220)
 
-        self.button_1 = button(self.screen, image = "resources\\quit_button.png")
+        self.button_1 = button(self.screen, image = "resources\\quit_button.png",
+                               image_hover="resources\\quit_button_hover.png")
         self.button_1.set_pos(screen.get_width() // 2 - self.button_0.width // 2 + 250,
                               screen.get_height() // 2 - self.button_0.height // 2 - 220)
         

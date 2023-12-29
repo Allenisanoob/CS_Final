@@ -2,17 +2,19 @@ import pygame
 
 class button():
     def __init__(self, screen = None, x = None, y = None, width = None, height = None,
-                 image = None, image_hover = None, image_click = None, color = None):
+                 image = None, image_hover = None, image_click = None, color = None, remove_bg = True):
         self.screen = screen
         self.x = x
         self.y = y
+        if image is None:
+            remove_bg = False
         
         if (width is None or height is None) and image is None:
             print("Error: button.__init__(): width and height and color or image are not given.")
             return -1
         elif not image is None:
             self.image = pygame.image.load(image).convert()
-            self.image.set_colorkey((0, 0, 0))
+            self.image.set_colorkey((0, 0, 0)) if remove_bg else None
             self.rect = self.image.get_rect()
             self.width = self.rect.width
             self.height = self.rect.height
@@ -29,9 +31,9 @@ class button():
         self.released = False
         
         self.image_hover = pygame.image.load(image_hover).convert() if not image_hover is None else self.image
-        self.image_hover.set_colorkey((0, 0, 0))
+        self.image_hover.set_colorkey(self.image_hover.get_at((0, 0))) if remove_bg else None
         self.image_click = pygame.image.load(image_click).convert() if not image_click is None else self.image
-        self.image_click.set_colorkey((0, 0, 0))
+        self.image_click.set_colorkey(self.image_click.get_at((0, 0))) if remove_bg else None
     
 
     def draw(self):

@@ -20,12 +20,13 @@ class scene:
         pygame.mouse.set_visible(False)
         
         #Creating next button
-        self.button_0 = button(self.screen, image = "resources\\next_button.png")
+        self.button_0 = button(self.screen, image = "resources\\next_button.png",
+                               image_hover="resources\\next_button_hover.png")
         self.button_0.set_pos(screen.get_width() // 2 - self.button_0.width // 2,
                               screen.get_height() // 2 - self.button_0.height // 2 + 280)
         
         #Creating selecting figure
-        self.button_1 = button(self.screen, image = "resources\\me1.png")
+        self.button_1 = button(self.screen, image = "resources\\me1.png", remove_bg = False)
         self.button_1.set_pos(x = 29,
                               y = screen.get_height() // 2 - self.button_1.height // 2)
         
